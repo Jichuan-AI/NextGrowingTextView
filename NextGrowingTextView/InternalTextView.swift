@@ -104,7 +104,8 @@ internal class InternalTextView: UITextView {
 
   @objc
   private dynamic func newLine(sender: UIKeyCommand) {
-      insertText("\n")
+    guard !text.isEmpty else { return }
+    insertText("\n")
   }
   
   @objc
