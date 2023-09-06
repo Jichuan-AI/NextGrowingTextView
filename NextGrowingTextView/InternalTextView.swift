@@ -96,8 +96,17 @@ internal class InternalTextView: UITextView {
     }
   }
 
+  override var keyCommands: [UIKeyCommand]? {
+    return [UIKeyCommand(input: "\r", modifierFlags: .shift, action: #selector(newLine(sender:)))]
+  }
+  
   // MARK: Private
 
+  @objc
+  private dynamic func newLine(sender: UIKeyCommand) {
+      insertText("\n")
+  }
+  
   @objc
   private dynamic func textDidChangeNotification(_ notification: Notification) {
     actionHandler(.didChangeContent)
